@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>3C Career</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row margin class="rowStyle">
+    <button ion-button icon-only clear color="danger" (click)="addPhoto()">
+      <ion-icon name="images"></ion-icon>
+    </button>
+
+    <ion-item>
+      <ion-input
+        type="text"
+        placeholder="Say something...."
+        [(ngModel)]="text"
+      ></ion-input>
+    </ion-item>
+
+    <button ion-button icon-only clear color="danger" (click)="post()">
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-row>
+  <ion-row margin class="rowStyle" *ngIf="image">
+    <ion-card class="rounded-corners">
+      <img [src]="image" class="rounded-corners" />
+    </ion-card>
+  </ion-row>
+  <ion-refresher (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let post of posts">
+    <ion-item-divider color="danger">
+      {{post.data().owner_name}} says...
+    </ion-item-divider>
+    <ion-item text-wrap>
+      {{post.data().text}}
+    </ion-item>
+    <img [src]="post.data().image" *ngIf="post.data().image">
+    <ion-row class="bottom-bar">
+      <ion-col>
+        <button
+          block
+          ion-button
+          icon-left
+          small
+          icon-left
+          clear
+          color="danger"
+          class="border-right"
+          (click)="like(post)"
+        >
+          <ion-icon name="thumbs-up"></ion-icon>
+          <small>{{post.data().likesCount||0}}</small>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          block
+          small
+          icon-left
+          clear
+          color="danger"
+          class="border-right"
+        >
+          <ion-icon name="text"></ion-icon>
+          <small> 12 comments</small>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          block
+          small
+          clear
+          icon-left
+          color="danger"
+          class="border-right"
+        >
+          <small>{{ago(post.data().created.toDate())}}ago</small>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="loadMorePosts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

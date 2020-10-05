@@ -1,0 +1,7 @@
+{
+  "name": "3cCareer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -17,4 +17,20 @@ page-feed {
     .rounded-corners{
         border-radius: 25px;
     }
+    .header-banner{
+		
+		height:200px;
+		min-height:200px;
+		background:red;
+	}
+
+	.slide-zoom {
+		// height:200px;
+		height: 100%;
+		// overflow:hidden;
+	}
+
+       ion-slides {
+          height: 200px;
+       }
 }

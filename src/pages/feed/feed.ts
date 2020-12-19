@@ -17,11 +17,13 @@ import { HttpClient } from "@angular/common/http";
 })
 export class FeedPage {
   text: string;
+  userRole:string;
   pageSize: number = 10;
   posts: any[] = [];
   cursor: any;
   infiniteEvent: any;
   image: string;
+  enableRecruiter:boolean;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,6 +34,28 @@ export class FeedPage {
   ) {
     this.getPosts();
   }
+
+  ngOnInit(){
+  console.log('ngOninit')
+   var dbRef= firebase.firestore().collection("userInfo").doc(firebase.auth().currentUser.uid)
+   dbRef.get().then((doc)=>{
+     var userDetails = doc.data()
+     
+     this.userRole=userDetails.role
+console.log(this.userRole)
+     if(this.userRole == 'recruiter'){
+      this.enableRecruiter = true
+     }else{
+       this.enableRecruiter = false
+     }
+
+   },(err)=>{
+   console.log(err)
+   })
+
+   
+  }
+
   post() {
     firebase
       .firestore()
@@ -282,4 +306,6 @@ export class FeedPage {
         }
       );
   }
+
+
 }

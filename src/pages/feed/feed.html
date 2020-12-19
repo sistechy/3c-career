@@ -10,7 +10,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-row margin class="rowStyle">
+
+  <ion-slides class="home-slide" autoplay="3000" loop>
+    <ion-slide>
+      <img src="https://unsplash.it/400/200/?image=1080" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="https://unsplash.it/400/200/?random" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="https://unsplash.it/400/200/?image=976" alt="">
+    </ion-slide>
+  </ion-slides>
+  
+  <ion-row margin class="rowStyle" *ngIf=enableRecruiter>
     <button ion-button icon-only clear color="danger" (click)="addPhoto()">
       <ion-icon name="images"></ion-icon>
     </button>

@@ -10,22 +10,31 @@ export class SignUpPage {
   name: string;
   email: string;
   password: string
+  selectedRole:string
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl:AlertController,public toastCtrl:ToastController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SignUpPage');
+  //  console.log('ionViewDidLoad SignUpPage');
   }
-  goBack() {
+  fetchRole()
+{
+ 
+  console.log(this.selectedRole)
+}  goBack() {
     this.navCtrl.pop();
   }
 
   onSignUp() {
-    console.log(this.name);
-    console.log(this.email);
-    console.log(this.password);
     firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then((userData) => {
-      console.log(userData)
+     // console.log(userData)
+      firebase.firestore().collection("userInfo").doc(userData.user.uid).set({
+        userName:this.name,
+        email:this.email,
+        role:this.selectedRole
+      }).then((res)=>{
+
+      })
       let newUser: firebase.User = userData.user;
       newUser.updateProfile({
         displayName: this.name,

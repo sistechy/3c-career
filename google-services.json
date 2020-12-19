@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "792219780953",
+    "firebase_url": "https://c-career.firebaseio.com",
+    "project_id": "c-career",
+    "storage_bucket": "c-career.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792219780953:android:0c8e3ad5fdb9350ed6ae48",
+        "android_client_info": {
+          "package_name": "com.sistechy.career"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792219780953-68n609b2s01oj9oulm7tqgk5qlar7g2i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdxhrp6S6Uqjq4MNY6APj4fHf1P04f9hY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792219780953-68n609b2s01oj9oulm7tqgk5qlar7g2i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
